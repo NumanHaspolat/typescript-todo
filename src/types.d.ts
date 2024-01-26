@@ -3,3 +3,6 @@ interface TodoType {
   isDone: boolean;
   id: string | number;
 }
+interface IListItem {
+  item: TodoType;
+}

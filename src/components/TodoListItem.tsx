@@ -1,7 +1,3 @@
-interface IListItem {
-  item: TodoType;
-}
-
 const TodoListItem: React.FC<IListItem> = ({ item }) => {
   return (
     <li>

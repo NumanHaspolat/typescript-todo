@@ -22,7 +22,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div id="container">
       <InputForm />
       <TodoList todos={todos} />
     </div>

@@ -17,5 +17,4 @@ const TodoList: React.FC<ITodoList> = ({ todos }) => {
 
 export default TodoList;
 
-
 //? ILK ARA BITTI
