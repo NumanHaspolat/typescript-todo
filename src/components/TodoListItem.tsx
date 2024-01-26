@@ -1,9 +1,20 @@
-const TodoListItem: React.FC<IListItem> = ({ item }) => {
+const TodoListItem: React.FC<IListItem> = ({
+  item,
+  toggleTodo,
+  deleteTodo,
+}) => {
   return (
-    <li>
-      <p className="chechked">Todo</p>
-      <p className="chechked">Todo</p>
-      <span className="task-icon">✖️</span>
+    <li className="item">
+      {item.isDone ? (
+        <p className="chechked" onClick={() => toggleTodo(item)}>
+          {item.task}
+        </p>
+      ) : (
+        <p onClick={() => toggleTodo(item)}>{item.task}</p>
+      )}
+      <span className="task-icon" onClick={() => deleteTodo(item.id)}>
+        ✖️
+      </span>
     </li>
   );
 };

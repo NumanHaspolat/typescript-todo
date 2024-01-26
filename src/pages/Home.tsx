@@ -17,14 +17,53 @@ const Home = () => {
     }
   };
 
+  const addTodo: AddF = async (text) => {
+    const newTodo = {
+      task: text,
+      isDone: false,
+    };
+
+    try {
+      await axios.post(url, newTodo);
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const toggleTodo: ToggleF = async (item) => {
+    try {
+      await axios.put(`${url}/${item.id}`, { ...item, isDone: !item.isDone });
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteTodo: DeleteF = async (id) => {
+    try {
+      await axios.delete(`${url}/${id}`);
+      getTodos();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
 
   return (
     <div id="container">
-      <InputForm />
-      <TodoList todos={todos} />
+      <div className="main">
+        <h1 className="header">Todo List With Tsx</h1>
+        <InputForm addTodo={addTodo} />
+        <TodoList
+          todos={todos}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+        />
+      </div>
     </div>
   );
 };
